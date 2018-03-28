@@ -7,6 +7,8 @@ class CreateReviews < ActiveRecord::Migration[5.1]
       t.integer :user_id
       t.integer :business_id
       t.integer :rating_id
+
+      t.timestamps null: false
     end
   end
 end
