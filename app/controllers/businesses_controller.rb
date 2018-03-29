@@ -5,6 +5,12 @@ class BusinessesController < ApplicationController
   end
 
   def create
+    business = Business.new(business_params)
+  end
 
+  private
+
+  def business_params
+    params.require(:business).permit(:name, :price_range, :description)
   end
 end
