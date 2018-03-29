@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :require_login, only: [:new, :create, :edit, :update]
+  before_action :require_login, except: [:show, :index]
 
   def new
     @business = Business.find_by(id: params[:business_id])
