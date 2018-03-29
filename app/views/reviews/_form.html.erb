@@ -1,0 +1,29 @@
+<% if review.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(review.errors.count, "error") %> prohibited this post from being saved
+    </h2>
+
+    <ul>
+      <% review.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div>
+  <%= form_for review do |f| %>
+    <li>Which business are you reviewing?</li>
+    <%= f.collection_select :business_id, Business.all, :id, :name, include_blank: true %>
+
+    <li>Or enter new business here: </li>
+    <%= render 'businesses/form' %>
+
+    <%= f.text_field :title, :placeholder => "Your title here..."%>
+    <%= f.text_area :comment, :placeholder => "How was your experience?" %>
+    <%= f.radio_button :would_recommend, :checked => true %>
+    <%= label :would_recommend, "Check, if you'd recommend this place to a friend" %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+  <% end %>
+</div>
