@@ -14,14 +14,14 @@
 
 <div>
   <%= form_for review do |f| %>
-    <li>Which business are you reviewing?</li>
-    <%= f.collection_select :business_id, Business.all, :id, :name, include_blank: true %>
+    <label>Which business are you reviewing?</label>
+    <%= f.collection_select :business_id, Business.all, :id, :name, include_blank: true %><br /><br />
 
-    <li>Or enter new business here: </li>
-    <%= render 'businesses/form' %>
+    <label>Or enter new business here: </label>
+    <%= render 'businesses/form' %><br />
 
-    <%= f.text_field :title, :placeholder => "Your title here..."%>
-    <%= f.text_area :comment, :placeholder => "How was your experience?" %>
+    <%= f.text_field :title, :placeholder => "Your title here...", :size => "50" %><br /><br />
+    <%= f.text_area :comment, :placeholder => "How was your experience?", :size => "48" %><br />
     <%= f.radio_button :would_recommend, :checked => true %>
     <%= label :would_recommend, "Check, if you'd recommend this place to a friend" %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
