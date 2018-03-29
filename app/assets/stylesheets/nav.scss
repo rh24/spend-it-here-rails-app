@@ -1,19 +1,38 @@
-.nav {
-
-}
-
-ul {
+#menu-horizontal {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: rgb(125, 125,	125)
+  background-color: rgb(125, 125,	125);
+  display: block;
+}
+
+#menuToggle ul {
+  list-style-type: none;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  border: 1px solid #555;
+  width: 155px;
+}
+
+#menuToggle li {
+  border-right: none;
+}
+
+#menuToggle li a {
+  text-align: center;
+  color: #000000;
+}
+
+#menu-horizontal li a:hover {
+  border-bottom: 1px solid #555;
 }
 
 li {
   float: left;
   border-right: 1px solid #bbb;
-  // position: sticky;
+  position: sticky;
 }
 
 .user-links {
@@ -33,7 +52,7 @@ li a {
   text-decoration: none;
 }
 
-li a:hover {
+#menu-horizontal li a:hover {
   background-color: rgb(100, 100, 100)
 }
 

@@ -1,6 +1,6 @@
 <header>
-  <div class="nav">
-    <ul>
+  <nav role="navigation">
+    <ul id="menu-horizontal">
       <li><%= link_to "Biz Index", biz_index_path %></li>
       <li><%= link_to "Categories", categories_path %></li>
       <li class="user-links"><%= link_to "Sign Out", destroy_user_session_path %></li>
@@ -10,5 +10,11 @@
         <li class="user-links"><%= link_to "#{current_user.email}", edit_user_registration_path %></li>
       <% end %>
     </ul>
-  </div>
+    <div id="menuToggle">
+      <ul>
+        <li><%= link_to "New Biz", new_biz_path %></li>
+        <li><%= link_to "" %></li>
+      </ul>
+    </div>
+  </nav>
 </header>
