@@ -13,7 +13,7 @@ class ReviewsController < ApplicationController
     elsif review.save
       redirect_to review_path(review)
     else
-      render 'new', :alert => 'Please fix the following errors:'
+      render 'new', :alert => "Invalid data. Please, fix"
     end
   end
 
@@ -27,8 +27,4 @@ class ReviewsController < ApplicationController
     params.require(:review).permit(:title, :comment, :would_recommend, :rating_id)
   end
   # What's the difference between review_params and review_params(*args)? Why use one over the other?
-
-  def require_login
-    redirect_to new_user_session_path if !current_user
-  end
 end
