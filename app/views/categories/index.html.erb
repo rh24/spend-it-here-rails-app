@@ -1,1 +1,9 @@
+<%= stylesheet_link_tag "categories" %>
+
 <h1>Categories Index</h1>
+
+<div class="category">
+  <% @categories.each do |c| %>
+    <li class="category"><%= link_to "#{c.name}", category_path(c) %></li>
+  <% end %>
+</div>

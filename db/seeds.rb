@@ -5,14 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create(email: "eatmytacos@gmail.com", password: "passw0rd", password_confirmation: "passw0rd")
-User.create(email: "starchild@gmail.com", password: "hellogoodbye", password_confirmation: "hellogoodbye")
+u1 = User.create(email: "eatmytacos@gmail.com", password: "passw0rd", password_confirmation: "passw0rd")
+u2 = User.create(email: "starchild@gmail.com", password: "hellogoodbye", password_confirmation: "hellogoodbye")
 
-Rating.create(number: 5)
-Rating.create(number: 4)
-Rating.create(number: 3)
-Rating.create(number: 2)
-Rating.create(number: 1)
+five = Rating.create(number: 5)
+four = Rating.create(number: 4)
+three = Rating.create(number: 3)
+two = Rating.create(number: 2)
+one = Rating.create(number: 1)
 
 Business.create(name: "Taco Shop", price_range: "$", description: "A place for all taco lovers to gather and break freshly made corn tortillas.")
 
@@ -44,4 +44,36 @@ Category.create(name: "Computers, accessories, and services")
 Category.create(name: "Bath and body")
 Category.create(name: "Children's clothing")
 
-Business.create(name: "La Sirene", price_range: "$$$", description: )
+l1 = Location.create(name: "New York City, NY")
+l2 = Location.create(name: "Brooklyn, NY")
+l3 = Location.create(name: "Los Angeles, CA")
+l4 = Location.create(name: "San Francisco, CA")
+l5 = Location.create(name: "Chicago, IL")
+l6 = Location.create(name: "N/A")
+
+b1 = Business.new(name: "La Sirene", price_range: "$$$", description: "French cuisine. We accept Dogecoin.")
+b1.location = l1
+b1.save
+b2 = Business.new(name: "Taco Mama", price_range: "$", description: "The best tacos ever")
+b2.location = l2
+b2.save
+
+c1 = Crypto.new(name: "Bitcoin")
+c2 = Crypto.new(name: "Dogecoin")
+c3 = Crypto.new(name: "Litecoin")
+c4 = Crypto.new(name: "Ethereum")
+c5 = Crypto.new(name: "Lisk")
+
+r = Review.new(title: "My first crypto purchase!", comment: "Cash and cardless experience was a pleasure. Pleased to support adoption. Excellent food. I recommend the snails.", would_recommend: true)
+r.user = u1
+r.rating = five
+r.business = b1
+r.crypto = c1
+r.save
+
+r2 = Review.new(title: "Second purchase ever!", comment: "Tacos taste better when purchased with crypto", would_recommend: true)
+r2.user = u2
+r2.rating = five
+r2.business = b2
+r2.crypto = c2
+r2.save

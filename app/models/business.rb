@@ -5,7 +5,7 @@ class Business < ApplicationRecord
   has_many :spendables
   has_many :cryptos, through: :spendables
   has_many :items
-  has_many :reviews, as: :crypto_business
+  has_many :reviews
   has_many :ratings, through: :reviews
   has_many :users, through: :reviews
 end

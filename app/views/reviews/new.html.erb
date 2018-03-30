@@ -1,7 +1,4 @@
 <h1>Add a Review: </h1>
 
-<% if !!@business %>
-  <%= render 'form', :review => @review %>
-<% else %>
-  <%= render 'form', :review => @review %>
-<% end %>
+
+<%= render 'form', :review => @review %>

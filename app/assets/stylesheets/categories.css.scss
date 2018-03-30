@@ -7,3 +7,15 @@
 .inline form {
    display: inline;
 }
+
+.category {
+  list-style-type: none;
+  color: black;
+  background-color: white;
+}
+
+li .category {
+  list-style-type: none;
+  color: black;
+  background-color: black;
+}

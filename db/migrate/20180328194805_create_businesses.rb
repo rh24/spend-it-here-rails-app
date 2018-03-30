@@ -4,6 +4,7 @@ class CreateBusinesses < ActiveRecord::Migration[5.1]
       t.string :name
       t.string :price_range
       t.text :description
+      t.integer :location_id
 
       t.timestamps null: false
     end
