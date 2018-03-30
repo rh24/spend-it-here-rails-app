@@ -1,6 +1,5 @@
 class Business < ApplicationRecord
   belongs_to :location
-  delegates :cryptos, to: :location
   has_many :business_categories
   has_many :categories, through: :business_categories
   has_many :spendables
