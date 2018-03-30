@@ -24,7 +24,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:title, :comment, :would_recommend, :rating_id)
+    params.require(:review).permit(:title, :comment, :would_recommend)
   end
   # What's the difference between review_params and review_params(*args)? Why use one over the other?
 end
