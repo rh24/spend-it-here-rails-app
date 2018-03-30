@@ -2,6 +2,10 @@
   <%= form_for :business do |f| %>
     <label>Select category: </label>
     <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: true %><br /><br />
+    <label>Where is this business located?</label>
+    <%= f.collection_select :location_id, Location.all, :id, :city, include_blank: true %><br />
+    <label>Or enter new location: </label>
+      <%= render 'locations/new' %>
 
     <%= f.text_field :name, :placeholder => "Name of business..." %>
     <%= f.text_field :price_range, :size => "28", :placeholder => "Price range e.g. $, $$, $$$..." %><br /><br />

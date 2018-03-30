@@ -1,0 +1,14 @@
+<div>
+  <%= form_for :location do |f| %>
+    <!-- <div> -->
+      <%= f.text_field :city, :placeholder => "City e.g. Los Angeles..." %>
+    <!-- </div> -->
+    <div>
+      <%= f.text_field :state, :placeholder => "State e.g. California" %>
+    </div>
+    <div>
+      <%= f.text_field :country, :placeholder => "Country e.g. USA" %>
+    </div>
+    <%= f.submit %>
+  <% end %>
+</div><br />

@@ -7,7 +7,11 @@ class Business < ApplicationRecord
   has_many :reviews
   has_many :users, through: :reviews
 
-  accepts_nested_attributes_for :cryptos
+  def crypto_attributes=(crypto)
+    spendable = Spendable.new(location_id: self.location.id, business_id: self.id)
+    self.crypto = Crypto.find_or_create_by(name: crypto.name)
+    self.crypto.update(crypto)
+  end
 
   # scope
   # def ratings

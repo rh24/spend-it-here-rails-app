@@ -37,12 +37,12 @@ Category.create(name: "Bath and body")
 Category.create(name: "Children's clothing")
 Category.create(name: "Other")
 
-l1 = Location.create(name: "New York City, NY")
-l2 = Location.create(name: "Brooklyn, NY")
-l3 = Location.create(name: "Los Angeles, CA")
-l4 = Location.create(name: "San Francisco, CA")
-l5 = Location.create(name: "Chicago, IL")
-l6 = Location.create(name: "N/A")
+l1 = Location.create(city: "New York City", state: "New York")
+l2 = Location.create(city: "Brooklyn", state: "New York")
+l3 = Location.create(city: "Los Angeles", state: "California")
+l4 = Location.create(city: "San Francisco", state: "California")
+l5 = Location.create(city: "Chicago", state: "Illinois")
+l6 = Location.create(city: "N/A")
 
 b1 = Business.new(name: "La Sirene", price_range: "$$$", description: "French cuisine. We accept Dogecoin.")
 b1.category = Category.where(name: "Restaurants").first
