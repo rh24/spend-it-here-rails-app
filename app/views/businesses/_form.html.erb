@@ -1,8 +1,20 @@
 <div class="clearfix">
   <%= form_for :business do |f| %>
+    <label>Select category: </label>
+    <%= f.collection_select :category_id, Category.all, :id, :name %>
+
     <%= f.text_field :name, :placeholder => "Name of business..." %>
     <%= f.text_field :price_range, :size => "28", :placeholder => "Price range e.g. $, $$, $$$..." %><br /><br />
-    <%= f.text_area :description, :size => "33x5", :placeholder => "Description..."%>
+    <%= f.text_area :description, :size => "48x5", :placeholder => "Description..."%><br />
+
+    <%= f.label "Enter cryptocurrencies accepted: " %><br />
+    <%= f.fields_for :cryptos do |crypto| %>
+      <%= crypto.text_field :name_1 %>
+      <%= crypto.text_field :name_2 %>
+      <%= crypto.text_field :name_3 %>
+      <% # What if I want to add rows as I go? %>
+    <% end %>
+
     <%= f.submit %>
   <% end %>
 </div>

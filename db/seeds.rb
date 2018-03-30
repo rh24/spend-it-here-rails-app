@@ -35,6 +35,7 @@ Category.create(name: "Shoes")
 Category.create(name: "Computers, accessories, and services")
 Category.create(name: "Bath and body")
 Category.create(name: "Children's clothing")
+Category.create(name: "Other")
 
 l1 = Location.create(name: "New York City, NY")
 l2 = Location.create(name: "Brooklyn, NY")
