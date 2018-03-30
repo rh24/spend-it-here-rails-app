@@ -1,1 +1,9 @@
-biz_index_path
+<h1>List of All Businesses</h1>
+
+<div class="">
+  <ul>
+    <% @businesses.each do |b| %>
+      <li><%= link_to "#{b.name}", biz_path(b) %></li>
+    <% end %>
+  </ul>
+</div>

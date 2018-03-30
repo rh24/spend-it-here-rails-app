@@ -1,6 +1,6 @@
 class BusinessesController < ApplicationController
   before_action :require_login, except: [:show, :index]
-  
+
   def new
     @business = Business.new
   end
@@ -12,6 +12,10 @@ class BusinessesController < ApplicationController
     else
       render 'new', :alert => "Invalid data. Please, fix."
     end
+  end
+
+  def index
+    @businesses = Business.all
   end
 
   private
