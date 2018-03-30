@@ -19,12 +19,17 @@
       <%= f.collection_select :business_id, Business.all, :id, :name, include_blank: true %><br /><br />
       <label>Or enter new business here: </label>
       <%= render 'businesses/form' %><br />
+        <% # How do I set review[:business_id] to a newly created business? %>
     </div>
     <div>
       <%= f.text_field :title, :placeholder => "Your title here...", :size => "50x" %><br /><br />
     </div>
     <div>
       <%= f.text_area :comment, :placeholder => "How was your experience?", :size => "48x18" %><br />
+    </div>
+    <div>
+      <label>Which cryptocurrency did you pay in?</label>
+      <%= f.collection_select :crypto_id, Crypto.all, :id, :name, include_blank: true %><br />
     </div>
     <div>
       <%= f.radio_button :would_recommend, :checked => true %>

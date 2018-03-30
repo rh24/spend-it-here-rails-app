@@ -7,4 +7,9 @@ class Business < ApplicationRecord
   has_many :items
   has_many :reviews
   has_many :users, through: :reviews
+
+  # scope
+  # def ratings
+  #   self.reviews.where(:rating)
+  # end
 end

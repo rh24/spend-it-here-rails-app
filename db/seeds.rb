@@ -8,12 +8,6 @@
 u1 = User.create(email: "eatmytacos@gmail.com", password: "passw0rd", password_confirmation: "passw0rd")
 u2 = User.create(email: "starchild@gmail.com", password: "hellogoodbye", password_confirmation: "hellogoodbye")
 
-five = Rating.create(number: 5)
-four = Rating.create(number: 4)
-three = Rating.create(number: 3)
-two = Rating.create(number: 2)
-one = Rating.create(number: 1)
-
 Business.create(name: "Taco Shop", price_range: "$", description: "A place for all taco lovers to gather and break freshly made corn tortillas.")
 
 Category.create(name: "Restaurants")
@@ -58,22 +52,20 @@ b2 = Business.new(name: "Taco Mama", price_range: "$", description: "The best ta
 b2.location = l2
 b2.save
 
-c1 = Crypto.new(name: "Bitcoin")
-c2 = Crypto.new(name: "Dogecoin")
-c3 = Crypto.new(name: "Litecoin")
-c4 = Crypto.new(name: "Ethereum")
-c5 = Crypto.new(name: "Lisk")
+c1 = Crypto.create(name: "Bitcoin")
+c2 = Crypto.create(name: "Dogecoin")
+c3 = Crypto.create(name: "Litecoin")
+c4 = Crypto.create(name: "Ethereum")
+c5 = Crypto.create(name: "Lisk")
 
 r = Review.new(title: "My first crypto purchase!", comment: "Cash and cardless experience was a pleasure. Pleased to support adoption. Excellent food. I recommend the snails.", would_recommend: true)
 r.user = u1
-r.rating = five
 r.business = b1
 r.crypto = c1
 r.save
 
 r2 = Review.new(title: "Second purchase ever!", comment: "Tacos taste better when purchased with crypto", would_recommend: true)
 r2.user = u2
-r2.rating = five
 r2.business = b2
 r2.crypto = c2
 r2.save
