@@ -1,6 +1,8 @@
 <div class="clearfix">
   <%= form_for :business do |f| %>
     <%= f.text_field :name, :placeholder => "Name of business..." %>
+    <%= f.text_field :price_range, :size => "28", :placeholder => "Price range e.g. $, $$, $$$..." %><br /><br />
+    <%= f.text_area :description, :size => "33x5", :placeholder => "Description..."%>
     <%= f.submit %>
   <% end %>
 </div>

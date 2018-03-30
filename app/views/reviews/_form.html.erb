@@ -21,15 +21,16 @@
       <%= render 'businesses/form' %><br />
     </div>
     <div>
-      <%= f.text_field :title, :placeholder => "Your title here...", :size => "50" %><br /><br />
+      <%= f.text_field :title, :placeholder => "Your title here...", :size => "50x" %><br /><br />
     </div>
     <div>
-      <%= f.text_area :comment, :placeholder => "How was your experience?", :size => "48" %><br />
+      <%= f.text_area :comment, :placeholder => "How was your experience?", :size => "48x18" %><br />
     </div>
     <div>
       <%= f.radio_button :would_recommend, :checked => true %>
       <%= label :would_recommend, "Check, if you'd recommend this place to a friend" %>
     </div>
     <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.submit %>
   <% end %>
 </div>
