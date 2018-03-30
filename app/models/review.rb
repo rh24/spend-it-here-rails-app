@@ -4,9 +4,16 @@ class Review < ApplicationRecord
   belongs_to :crypto
   # alias_attribute :crypto_id, :spent_in
 
-  accepts_nested_attributes_for :business
-  accepts_nested_attributes_for :crypto
-  
+  def business_attributes=(business)
+    self.business = Business.find_or_create_by(name: business.name)
+    self.business.update(business)
+  end
+
+  def crypto_attributes=(crypto)
+    self.crypto = Crypto.find_or_create_by(name: crypto.name)
+    self.crypto.update(crypto)
+  end
+
   # OR
   # should I use a polymorphic association here?
   # belongs_to :crypto_business, polymorphic: true

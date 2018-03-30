@@ -1,7 +1,7 @@
 <div class="clearfix">
   <%= form_for :business do |f| %>
     <label>Select category: </label>
-    <%= f.collection_select :category_id, Category.all, :id, :name %>
+    <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: true %><br /><br />
 
     <%= f.text_field :name, :placeholder => "Name of business..." %>
     <%= f.text_field :price_range, :size => "28", :placeholder => "Price range e.g. $, $$, $$$..." %><br /><br />
@@ -12,6 +12,9 @@
       <%= crypto.text_field :name_1 %>
       <%= crypto.text_field :name_2 %>
       <%= crypto.text_field :name_3 %>
+      <!-- <%= crypto.collection_select :name_1, Crypto.all, :id, :name, include_blank: true %>
+      <%= crypto.collection_select :name_2, Crypto.all, :id, :name, include_blank: true %>
+      <%= crypto.collection_select :name_3, Crypto.all, :id, :name, include_blank: true %> -->
       <% # What if I want to add rows as I go? %>
     <% end %>
 

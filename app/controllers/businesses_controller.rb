@@ -8,7 +8,7 @@ class BusinessesController < ApplicationController
   def create
     business = Business.new(business_params)
     if business.save
-      redirect_to business_path(business)
+      redirect_to biz_path(business)
     else
       render 'new', :alert => "Invalid data. Please, fix."
     end

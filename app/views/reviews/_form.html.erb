@@ -33,6 +33,7 @@
       <label>Or enter coin/token here: </label>
       <%= f.fields_for :cryptos do |crypto| %>
         <%= crypto.text_field :name_1 %>
+        <% # What if I want to add fields as I go? %>
       <% end %>
     </div>
     <div>

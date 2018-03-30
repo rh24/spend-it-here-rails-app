@@ -45,15 +45,18 @@ l5 = Location.create(name: "Chicago, IL")
 l6 = Location.create(name: "N/A")
 
 b1 = Business.new(name: "La Sirene", price_range: "$$$", description: "French cuisine. We accept Dogecoin.")
+b1.category = Category.where(name: "Restaurants").first
 b1.location = l1
 b1.save
 
 b2 = Business.new(name: "Bicyclia", price_range: "$", description: "Bicycles for everyone. They come in all shapes and sizes. Just like people.")
 b2.location = l2
+b2.category = Category.where(name: "Sports and outdoors").first
 b2.save
 
 b0 = Business.new(name: "Taco Shop", price_range: "$", description: "A place for all taco lovers to gather and break freshly made corn tortillas.")
 b0.location = l3
+b0.category = Category.where(name: "Restaurants").first
 b0.save
 
 c1 = Crypto.create(name: "Bitcoin")
