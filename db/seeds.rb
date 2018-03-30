@@ -43,3 +43,5 @@ Category.create(name: "Shoes")
 Category.create(name: "Computers, accessories, and services")
 Category.create(name: "Bath and body")
 Category.create(name: "Children's clothing")
+
+Business.create(name: "La Sirene", price_range: "$$$", )
