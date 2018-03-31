@@ -1,4 +1,31 @@
 <h1>New Business: </h1>
 
-<%= render 'form', :business => @business, :url => biz_index_path %>
+<% if !!flash[:alert] %>
+  <%= flash[:alert] %>
+<% end %>
+
+<!-- <%= render 'form', :business => @business, :url => biz_index_path %> -->
 <% # How do I make the :url => biz_path(@business)? I'm having a routing error %>
+
+  <%= form_for @business, :url => '/businesses' do |f| %>
+    <label>Select category: </label>
+    <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: true %><br /><br />
+    <label>Where is this business located?</label>
+    <%= f.collection_select :location_id, Location.all, :id, :city, include_blank: true %><br />
+    <label>Or enter new location: </label>
+
+    <%= f.text_field :name, :placeholder => "Name of business..." %>
+    <%= f.text_field :price_range, :size => "28", :placeholder => "Price range e.g. $, $$, $$$..." %><br /><br />
+    <%= f.text_area :description, :size => "48x5", :placeholder => "Description..."%><br />
+
+    <%= f.label "Enter cryptocurrencies accepted: " %><br />
+    <%= f.fields_for :cryptos do |crypto| %>
+      <%= crypto.text_field :name_1 %>
+      <!-- <%= crypto.collection_select :name_1, Crypto.all, :id, :name, include_blank: true %>
+      <%= crypto.collection_select :name_2, Crypto.all, :id, :name, include_blank: true %>
+      <%= crypto.collection_select :name_3, Crypto.all, :id, :name, include_blank: true %> -->
+      <% # What if I want to add rows as I go? %>
+    <% end %>
+
+    <%= f.submit %>
+  <% end %>

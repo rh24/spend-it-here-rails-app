@@ -6,11 +6,13 @@ class BusinessesController < ApplicationController
   end
 
   def create
-    business = Business.new(business_params)
-    if business.save
-      redirect_to biz_path(business)
+    @business = Business.new(business_params)
+    if @business.save
+      redirect_to biz_path(@business)
     else
-      render 'new', :alert => "Invalid data. Please, fix."
+      raise @business.errors.full_messages.inspect
+      flash[:alert] = "Fix me!"
+      redirect_to new_biz_path
     end
   end
 
@@ -25,6 +27,6 @@ class BusinessesController < ApplicationController
   private
 
   def business_params
-    params.require(:business).permit(:name, :price_range, :description)
+    params.require(:business).permit(:name, :price_range, :description, :category_id, :location_id, :crypto_id)
   end
 end
