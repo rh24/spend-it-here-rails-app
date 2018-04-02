@@ -14,7 +14,7 @@ class Business < ApplicationRecord
     # raise crypto_attributes.inspect # {"id_1"=>"3", "id_2"=>"", "id_3"=>""}
     ids = crypto_attributes.values.first.reject { |value| value.to_s.empty? }.uniq
     ids.each do |id|
-      spendable = Spendable.new(location_id: self.location.id, crypto_id: id)
+      spendable = Spendable.find_or_create_by(location_id: self.location.id, crypto_id: id)
       self.spendables << spendable if !self.spendables.include?(spendable)
       # Should I be doing this in the custom attribute writer or the businesses#create controller action?
       # crypto = Crypto.find_by(id: id)

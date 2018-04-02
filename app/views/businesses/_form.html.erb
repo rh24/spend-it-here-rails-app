@@ -11,9 +11,9 @@
 
   <%= f.label "Enter cryptocurrencies accepted: " %><br />
   <%= f.fields_for :crypto_attributes do |crypto| %>
-    <%= crypto.collection_check_boxes :ids, Crypto.all, :id, :name, { checked: business.crypto_ids }%>
-    <!-- <%= crypto.collection_select :id_2, Crypto.all, :id, :name, include_blank: true %>
-    <%= crypto.collection_select :id_3, Crypto.all, :id, :name, include_blank: true %> -->
+    <%= crypto.collection_check_boxes :ids, Crypto.all, :id, :name, { checked: business.crypto_ids },
+    { item_wrapper_class: 'checkbox_container'} %>
+
     <% # What if I want to add rows as I go? %>
   <% end %>
 
