@@ -6,8 +6,13 @@ class Business < ApplicationRecord
   has_many :items
   has_many :reviews
   has_many :users, through: :reviews
+  # has_many :cryptos, through: :reviews
+
+  validates :name, presence: true
+  validates :description, presence: true
 
   def crypto_attributes=(crypto)
+    binding.pry
     spendable = Spendable.new(location_id: self.location.id, business_id: self.id)
     self.crypto = Crypto.find_or_create_by(name: crypto.name)
     self.crypto.update(crypto)

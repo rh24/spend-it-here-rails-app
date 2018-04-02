@@ -1,3 +1,9 @@
+<div class="">
+  <% if !!flash[:alert] %>
+    <%= flash[:alert] %>
+  <% end %>
+</div>
+
 <%= form_for business, :url => url do |f| %>
   <label>Select category: </label>
   <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: true %><br /><br />
@@ -11,10 +17,10 @@
 
   <%= f.label "Enter cryptocurrencies accepted: " %><br />
   <%= f.fields_for :cryptos do |crypto| %>
-    <%= crypto.text_field :name_1 %>
-    <!-- <%= crypto.collection_select :name_1, Crypto.all, :id, :name, include_blank: true %>
-    <%= crypto.collection_select :name_2, Crypto.all, :id, :name, include_blank: true %>
-    <%= crypto.collection_select :name_3, Crypto.all, :id, :name, include_blank: true %> -->
+    <!-- <%= crypto.text_field :name_1 %> -->
+    <%= crypto.collection_select :[], Crypto.all, :id, :name, include_blank: true %>
+    <%= crypto.collection_select :[], Crypto.all, :id, :name, include_blank: true %>
+    <%= crypto.collection_select :[], Crypto.all, :id, :name, include_blank: true %>
     <% # What if I want to add rows as I go? %>
   <% end %>
 
