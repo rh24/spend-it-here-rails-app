@@ -10,13 +10,9 @@ class BusinessesController < ApplicationController
     @business = Business.new(business_params)
     # raise business_params.inspect
     if @business.save
-      # c = business_params[:crypto_attributes].values.reject { |value| value.to_s.empty? }
-      # c.each do |id|
-      #   Spendable.find_or_create_by(location_id: self.location.id, business_id: self.id, crypto_id: id)
-      # end
       redirect_to biz_path(@business)
     else
-      raise @business.errors.full_messages.inspect
+      # raise @business.errors.full_messages.inspect
       flash[:alert] = "Fix me!"
       redirect_to new_biz_path
     end
