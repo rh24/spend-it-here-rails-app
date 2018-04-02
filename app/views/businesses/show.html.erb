@@ -1,3 +1,9 @@
+<div class="">
+  <% if !!flash[:alert] %>
+    <%= flash[:alert] %>
+  <% end %>
+</div>
+
 <h1><%= @business.name %></h1>
 
 <div class="">
@@ -16,5 +22,6 @@
 </div>
 
 <div class="">
-  <%= link_to "Delete Business", biz_path(@business), :method => :delete, :confirm => "Are you sure?" %>
+  <%= link_to "Delete Business", biz_path(@business), :method => :delete, :confirm => "Are you sure?" %> |
+  <%= link_to "Edit Information", edit_biz_path(@business) %>
 </div>

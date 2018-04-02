@@ -21,6 +21,16 @@ class BusinessesController < ApplicationController
   def edit
   end
 
+  def update
+    if @business.update(business_params)
+      flash[:alert] = "Business was successfully updated."
+      redirect_to biz_path(@business)
+    else
+      flash[:alert] = "Fix me!"
+      redirect_to edit_biz_path(@business)
+    end
+  end
+
   def index
     @businesses = Business.all
   end

@@ -1,3 +1,9 @@
+<div class="">
+  <% if !!flash[:alert] %>
+    <%= flash[:alert] %>
+  <% end %>
+</div>
+
 <h1>Edit Business:</h1>
 
 <%= render 'form', :business => @business, :url => biz_path(@business)%>
