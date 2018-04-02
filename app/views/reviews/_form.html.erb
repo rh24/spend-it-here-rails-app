@@ -13,13 +13,12 @@
 <% end %>
 
 <div>
-  <%= form_for review do |f| %>
+  <%= form_for review, :url => url do |f| %>
     <div>
       <label>Which business are you reviewing?</label>
       <%= f.collection_select :business_id, Business.all, :id, :name, include_blank: true %><br /><br />
       <label>Or enter new business here: </label>
-      <%= render 'businesses/form' %><br /><br />
-        <% # How do I set review[:business_id] to a newly created business? %>
+        <% # Have to make nested form %>
     </div>
     <div>
       <%= f.text_field :title, :placeholder => "Your review title here...", :size => "50x" %><br /><br />

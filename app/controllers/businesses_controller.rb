@@ -8,8 +8,12 @@ class BusinessesController < ApplicationController
 
   def create
     @business = Business.new(business_params)
-    # binding.pry
+    # raise business_params.inspect
     if @business.save
+      # c = business_params[:crypto_attributes].values.reject { |value| value.to_s.empty? }
+      # c.each do |id|
+      #   Spendable.find_or_create_by(location_id: self.location.id, business_id: self.id, crypto_id: id)
+      # end
       redirect_to biz_path(@business)
     else
       raise @business.errors.full_messages.inspect
@@ -41,6 +45,13 @@ class BusinessesController < ApplicationController
   end
 
   def business_params
-    params.require(:business).permit(:name, :price_range, :description, :category_id, :location_id, crypto_ids: [])
+    params.require(:business).permit(
+      :name,
+      :price_range,
+      :description,
+      :category_id,
+      :location_id,
+      crypto_attributes: {}
+    )
   end
 end

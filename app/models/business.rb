@@ -11,11 +11,16 @@ class Business < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
 
-  def crypto_attributes=(crypto)
-    binding.pry
-    spendable = Spendable.new(location_id: self.location.id, business_id: self.id)
-    self.crypto = Crypto.find_or_create_by(name: crypto.name)
-    self.crypto.update(crypto)
+  # accepts_nested_attributes_for :cryptos
+
+  def crypto_attributes=(crypto_attributes)
+    # raise crypto_attributes.inspect # {"id_1"=>"3", "id_2"=>"", "id_3"=>""}
+    c = crypto_attributes.values.reject { |value| value.to_s.empty? }
+        # binding.pry
+    c.each do |id|
+      crypto = Crypto.find_by(id: id)
+      self.cryptos << crypto if !self.cryptos.include?(crypto)
+    end
   end
 
   # scope

@@ -16,11 +16,11 @@
   <%= f.text_area :description, :size => "48x5", :placeholder => "Description..."%><br />
 
   <%= f.label "Enter cryptocurrencies accepted: " %><br />
-  <%= f.fields_for :cryptos do |crypto| %>
+  <%= f.fields_for :crypto_attributes do |crypto| %>
     <!-- <%= crypto.text_field :name_1 %> -->
-    <%= crypto.collection_select :[], Crypto.all, :id, :name, include_blank: true %>
-    <%= crypto.collection_select :[], Crypto.all, :id, :name, include_blank: true %>
-    <%= crypto.collection_select :[], Crypto.all, :id, :name, include_blank: true %>
+    <%= crypto.collection_select :id_1, Crypto.all, :id, :name, include_blank: true %>
+    <%= crypto.collection_select :id_2, Crypto.all, :id, :name, include_blank: true %>
+    <%= crypto.collection_select :id_3, Crypto.all, :id, :name, include_blank: true %>
     <% # What if I want to add rows as I go? %>
   <% end %>
 
