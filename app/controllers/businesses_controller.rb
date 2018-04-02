@@ -22,7 +22,11 @@ class BusinessesController < ApplicationController
   end
 
   def update
+    # binding.pry
     if @business.update(business_params)
+      @business.update(crypto_ids: business_params[:crypto_attributes][:ids])
+      # Why isn't this already taken care of in line 26?
+
       flash[:alert] = "Business was successfully updated."
       redirect_to biz_path(@business)
     else
