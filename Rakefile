@@ -8,7 +8,7 @@ Rails.application.load_tasks
 namespace :app do
   desc "Scrape coins"
   task :scrape_coins => :environment do
-    Scraper.new.scrape_coins
+    Scraper.create_all_coin_instances
   end
 end
 
