@@ -30,11 +30,15 @@ class Business < ApplicationRecord
   # users pay most with ___ crypto
   # select reviews, group by cryptos, order desc, LIMIT 1
 
+  def self.order_by_name
+    order(name: "asc")
+  end
+
   def previous_page
-    self.class.where("id < ?", self.id).order(name: "desc").first
+    self.class.where("name < ?", self.name).order(name: "desc").first
   end
 
   def next_page
-    self.class.where("id > ?", self.id).order(name: "asc").first
+    self.class.where("name > ?", self.name).order(name: "asc").first
   end
 end
