@@ -7,6 +7,10 @@
 <h1>List of All Businesses</h1>
 
 <div class="">
+  <%= form_for biz_index_path, method: :get do %>
+  <% end %>
+</div>
+<div class="">
   <ul>
     <% @businesses.each do |b| %>
       <li><%= link_to "#{b.name}", biz_path(b) %></li>

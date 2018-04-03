@@ -1,6 +1,7 @@
 class BusinessesController < ApplicationController
   before_action :require_login, except: [:show, :index]
   before_action :set_business, only: [:edit, :update, :show, :destroy]
+  has_scope :offer_discounts, :type => :boolean
 
   def new
     @business = Business.new
@@ -36,7 +37,17 @@ class BusinessesController < ApplicationController
   end
 
   def index
-    @businesses = Business.order_by_name
+    @businesses = Business.where(nil) # creates an anonymous scope
+    # raise params.inspect
+    @businesses = @businesses.offer_discounts(params[:offer_discounts]) if params[:offer_discounts].present?
+    # raise @businesses.inspect
+    # @businesses = Business.order_by_name
+    # filtering_params.each do |key, value|
+    #   @businesses = @businesses.public_send(key, value) if value.present?
+    # end
+    # if params[:offer_discounts]
+    #   @businesses = apply_scopes(Business.order_by_name).all
+    # end
   end
 
   def show
@@ -49,6 +60,10 @@ class BusinessesController < ApplicationController
   end
 
   private
+
+  def filtering_params
+    params.slice(:offer_discounts)
+  end
 
   def set_business
     @business = Business.find_by(id: params[:id])

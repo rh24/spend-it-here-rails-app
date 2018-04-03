@@ -4,7 +4,7 @@ class Review < ApplicationRecord
   belongs_to :crypto
   # alias_attribute :crypto_id, :spent_in
 
-  def businesses_attributes=(business_attributes)
+  def businesses_attributes=(business_attributes) # How can I clean this custom setter up?
     # Why do I need to put self only once?
     # business_attributes = {"category_id"=>"12", "name"=>"Beacon's Closet", "price_range"=>"$$", "description"=>"One stop shop.", "location_id"=>"1", "discount_offered"=>"1"}
     # "businesses_attributes"=>

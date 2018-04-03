@@ -24,6 +24,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 
 gem 'dotenv-rails'
+gem 'has_scope', '~> 0.7.1'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

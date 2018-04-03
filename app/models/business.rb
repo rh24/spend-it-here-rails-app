@@ -30,6 +30,12 @@ class Business < ApplicationRecord
   # users pay most with ___ crypto
   # select reviews, group by cryptos, order desc, LIMIT 1
 
+  scope :offer_discounts, -> (offer_discounts) { where(discount_offered: true) }
+
+    # def self.offer_discounts
+    #   where(discount_offered: true)
+    # end
+
   def self.order_by_name
     order(name: "asc")
   end
