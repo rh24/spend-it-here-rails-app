@@ -12,6 +12,12 @@ class Review < ApplicationRecord
     business.price_range = business_attributes[:price_rage]
     business.description = business_attributes[:description]
     business.discount_offered = business_attributes[:discount_offered]
+
+    business_attributes[:crypto_ids].each do |id|
+      crypto = Crypto.find(id)
+      business.cryptos << crypto if !business.cryptos.include?(crypto)
+    end
+    
     save
     # self.business.update(business)
   end

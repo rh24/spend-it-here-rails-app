@@ -20,7 +20,6 @@ class Business < ApplicationRecord
       # crypto = Crypto.find_by(id: id)
       # self.cryptos << crypto if !self.cryptos.include?(crypto)
     end
-
     self.save
     # If I save here will validation errors show up?
     # Before this custom attribute writer hits, the model validations will be triggered first.
@@ -30,4 +29,8 @@ class Business < ApplicationRecord
   # def ratings
   #   self.reviews.where(:rating)
   # end
+
+  # scope method
+  # users pay most with ___ crypto
+  # select reviews, group by cryptos, order desc, LIMIT 1
 end

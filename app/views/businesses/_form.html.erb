@@ -13,9 +13,10 @@
   <%= f.fields_for :crypto_attributes do |crypto| %>
     <%= crypto.collection_check_boxes :ids, Crypto.all, :id, :name, { checked: business.crypto_ids },
     { item_wrapper_class: 'checkbox_container'} %>
+  <% end %><br /><br />
 
-    <% # What if I want to add rows as I go? %>
-  <% end %>
+  <%= f.check_box :discount_offered, :checked => false %>
+  <%= f.label "Discount offered for crypto payments?" %><br />
 
   <%= f.submit %>
 <% end %>
