@@ -14,12 +14,14 @@
 
 <div>
   <%= form_for review, :url => url do |f| %>
-    <div>
-      <label>Which business are you reviewing?</label>
-      <%= f.collection_select :business_id, Business.all, :id, :name, include_blank: true %><br /><br />
-      <label>Or enter new business here: </label>
-        <% # Have to make nested form %>
-    </div>
+    <% if !params[:biz_id] %>
+      <div>
+        <label>Which business are you reviewing?</label>
+        <%= f.collection_select :business_id, Business.all, :id, :name, include_blank: true %><br /><br />
+        <label>Or enter new business here: </label>
+          <% # Have to make nested form %>
+      </div>
+    <% end %>
     <div>
       <%= f.text_field :title, :placeholder => "Your review title here...", :size => "50x" %><br /><br />
     </div>

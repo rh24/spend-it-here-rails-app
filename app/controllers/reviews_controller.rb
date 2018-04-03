@@ -27,7 +27,7 @@ class ReviewsController < ApplicationController
   private
 
   def set_business
-    @business = Business.find_by(id: params[:business_id])
+    @business = Business.find_by(id: params[:biz_id])
   end
 
   def review_params
