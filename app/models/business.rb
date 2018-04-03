@@ -29,4 +29,12 @@ class Business < ApplicationRecord
   # scope method
   # users pay most with ___ crypto
   # select reviews, group by cryptos, order desc, LIMIT 1
+
+  def previous_page
+    self.class.where("id < ?", self.id).order(name: "desc").first
+  end
+
+  def next_page
+    self.class.where("id > ?", self.id).order(name: "asc").first
+  end
 end

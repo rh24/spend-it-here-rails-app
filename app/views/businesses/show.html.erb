@@ -28,4 +28,9 @@
   <%= link_to "Edit Information", edit_biz_path(@business) %> |
   <%= link_to "View #{@business.name}'s Reviews", biz_reviews_path(@business) %> |
   <%= link_to "Add Review for #{@business.name}", new_biz_review_path(@business, @review) %>
+</div><br />
+
+<div class="">
+  <%= link_to("Previous Page", biz_path(@business.previous_page)) if @business.previous_page %> |
+  <%= link_to("Next Page", biz_path(@business.next_page)) if @business.next_page %>
 </div>
