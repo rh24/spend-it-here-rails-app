@@ -19,7 +19,9 @@
       <li><%= c.name %></li>
     <% end %>
   </ul>
-</div>
+  <label>Discounts/specials offered for crypto payments? </label>
+  <%= "#{@business.discount_offered}".capitalize %>
+</div><br />
 
 <div class="">
   <%= link_to "Delete Business", biz_path(@business), :method => :delete, :confirm => "Are you sure?" %> |

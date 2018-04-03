@@ -18,9 +18,20 @@
       <div>
         <label>Which business are you reviewing?</label>
         <%= f.collection_select :business_id, Business.all, :id, :name, include_blank: true %><br /><br />
-        <label>Or enter new business here: </label>
+        <label>Or enter new business here: </label><br />
           <% # Have to make nested form %>
-      </div>
+          <%= f.fields_for :businesses_attributes do |business| %>
+            <%= label :category_id, "Select category: " %>
+            <%= business.collection_select :category_id, Category.all, :id, :name, include_blank: true %><br />
+            <%= business.text_field :name, :size => "50", :placeholder => "Enter name of business here..." %><br />
+            <%= business.text_field :price_range, :size => "50", :placeholder => "Price range e.g. $, $$, $$$..." %><br />
+            <%= business.text_area :description, :size => "48x5", :placeholder => "Description of goods and services..." %><br />
+            <label>Select location: </label>
+            <%= business.collection_select :location_id, Location.all, :id, :city %>
+            <%= business.check_box :discount_offered, :checked => true %>
+            <%= label :discount_offered, "Discount offered for crypto payments?" %>
+          <% end %>
+      </div><br />
     <% end %>
     <div>
       <%= f.text_field :title, :placeholder => "Your review title here...", :size => "50x" %><br /><br />
@@ -38,7 +49,7 @@
       <% end %>
     </div>
     <div>
-      <%= f.radio_button :would_recommend, :checked => true %>
+      <%= f.check_box :would_recommend, :checked => true %>
       <%= label :would_recommend, "Check, if you'd recommend this place to a friend." %>
     </div>
     <%= f.hidden_field :user_id, :value => current_user.id %>

@@ -61,6 +61,7 @@ class BusinessesController < ApplicationController
       :description,
       :category_id,
       :location_id,
+      :discount_offered,
       crypto_attributes: {}
     )
   end
