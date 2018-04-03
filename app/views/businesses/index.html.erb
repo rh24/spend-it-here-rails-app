@@ -4,7 +4,11 @@
   <% end %>
 </div>
 
-<h1>List of All Businesses</h1>
+<% if params[:offer_discounts] %>
+  <h1>We offer discounts for crypto payments!</h1>
+<% else %>
+  <h1>List of All Businesses</h1>
+<% end %>
 
 <div class="">
   <%= form_for biz_index_path, method: :get do %>
