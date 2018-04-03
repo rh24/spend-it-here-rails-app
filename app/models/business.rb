@@ -15,9 +15,6 @@ class Business < ApplicationRecord
     crypto_attributes[:ids].reject { |value| value.to_s.empty? }.each do |id|
       spendable = Spendable.find_or_create_by(location_id: self.location.id, crypto_id: id)
       self.spendables << spendable if !self.spendables.include?(spendable)
-      # Should I be doing this in the custom attribute writer or the businesses#create controller action?
-      # crypto = Crypto.find_by(id: id)
-      # self.cryptos << crypto if !self.cryptos.include?(crypto)
     end
     self.save
     # If I save here will validation errors show up?
