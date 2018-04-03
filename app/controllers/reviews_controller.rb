@@ -8,14 +8,11 @@ class ReviewsController < ApplicationController
 
   def create
     # Why must an instance variable be used here?
-    # raise review_params.inspect
     @review = Review.new(review_params)
-    @business = Business.find_or_create_by(params[:review][:business])
-    if @review.save && !!@business.save
-      @review.business = @business
-      @review.save
-          # binding.pry
-      redirect_to biz_review_path(@business, @review)
+    # @business = Business.find_or_create_by(params[:review][:business])
+    if @review.save
+      binding.pry
+      redirect_to biz_review_path(@review.business.id, @review)
     else
       flash[:alert] = "Invalid data. Please, fix."
       render 'new'
@@ -44,12 +41,6 @@ class ReviewsController < ApplicationController
       :user_id,
       :business_id,
       :businesses_attributes => {}
-        # :category_id,
-        # :name,
-        # :price_range,
-        # :description,
-        # :location_id,
-        # :discount_offered
     )
   end
   # What's the difference between review_params and review_params(*args)? Why use one over the other?

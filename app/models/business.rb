@@ -11,9 +11,8 @@ class Business < ApplicationRecord
   validates :description, presence: true
 
   def crypto_attributes=(crypto_attributes)
-    # raise crypto_attributes.inspect # {"id_1"=>"3", "id_2"=>"", "id_3"=>""}
-    ids = crypto_attributes.values.first.reject { |value| value.to_s.empty? }.uniq
-    ids.each do |id|
+    # raise crypto_attributes.inspect # {"ids"=>["", "7", "8"]}
+    crypto_attributes[:ids].reject { |value| value.to_s.empty? }.each do |id|
       spendable = Spendable.find_or_create_by(location_id: self.location.id, crypto_id: id)
       self.spendables << spendable if !self.spendables.include?(spendable)
       # Should I be doing this in the custom attribute writer or the businesses#create controller action?
