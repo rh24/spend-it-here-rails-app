@@ -9,7 +9,6 @@ class BusinessesController < ApplicationController
 
   def create
     @business = Business.new(business_params)
-    # raise business_params.inspect
     if @business.save
       redirect_to biz_path(@business)
     else
@@ -37,7 +36,7 @@ class BusinessesController < ApplicationController
   end
 
   def index
-    @businesses = Business.where(nil) # creates an anonymous scope
+    @businesses = Business.where(nil) # creates an anonymous scope. What does that mean?
     # raise params.inspect
     @businesses = @businesses.offer_discounts(params[:offer_discounts]) if params[:offer_discounts].present?
     # raise @businesses.inspect

@@ -1,5 +1,9 @@
-<h1>Thanks for submiting a review!</h1>
+<% if flash[:notice] %>
+  <%= flash[:notice] %>
+<% end %>
+
+<h2><%= @review.title %></h2>
 
 <div>
-  <%= @review.title %>
+  <%= @review.comment %>
 </div>

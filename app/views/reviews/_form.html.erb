@@ -56,6 +56,9 @@
       <%= label :would_recommend, "Check, if you'd recommend this place to a friend." %>
     </div>
     <%= f.hidden_field :user_id, :value => current_user.id %>
+    <% if params[:biz_id] %>
+      <%= f.hidden_field :business_id, :value => Business.find_by(id: params[:biz_id]).id %>
+    <% end %>
     <%= f.submit %>
   <% end %>
 </div>

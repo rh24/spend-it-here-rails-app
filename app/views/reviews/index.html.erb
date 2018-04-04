@@ -1,1 +1,20 @@
 <h1><%= @business.name %>'s Reviews</h1>
+
+<div class="">
+  <ul>
+    <% @business.reviews.each do |r| %>
+      <li>
+        <h4><%= r.title %></h4>
+        <%= r.rating %>
+        <%= r.comment %>
+        <% if r.would_recommend %>
+          <p><%= r.user.email %> recommends this business.</p>
+        <% else %>
+          <p><%= r.user.email %> does not recommend this business.</p>
+        <% end %>
+        <label>User paid in</label>
+        <%= r.crypto.name %><br />
+      </li>
+    <% end %>
+  </ul>
+</div>

@@ -11,8 +11,7 @@ class Business < ApplicationRecord
   validates :description, presence: true
 
   def crypto_attributes=(crypto_attributes)
-    # raise crypto_attributes.inspect # {"ids"=>["", "7", "8"]}
-    crypto_attributes[:ids].reject { |value| value.to_s.empty? }.each do |id|
+    crypto_attributes.reject { |value| value.to_s.empty? }.each do |id|
       spendable = Spendable.find_or_create_by(location_id: self.location.id, crypto_id: id)
       self.spendables << spendable if !self.spendables.include?(spendable)
     end
