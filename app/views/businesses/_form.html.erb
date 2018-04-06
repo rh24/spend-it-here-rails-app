@@ -3,7 +3,12 @@
   <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: true %><br /><br />
   <label>Where is this business located?</label>
   <%= f.collection_select :location_id, Location.all, :id, :city, include_blank: true %><br />
-  <label>Or enter new location: </label>
+  <label>Or enter new location here: </label><br />
+    <%= f.fields_for :location_attributes do |location| %>
+      <%= location.text_field :city, :placeholder => "City" %>
+      <%= location.text_field :state, :placeholder => "State" %>
+      <%= location.text_field :country, :placeholder => "Country" %>
+    <% end %><br /><br />
 
   <%= f.text_field :name, :placeholder => "Name of business..." %>
   <%= f.text_field :price_range, :size => "28", :placeholder => "Price range e.g. $, $$, $$$..." %><br /><br />

@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :require_login, except: [:show, :index]
   before_action :set_business, except: [:create]
-  before_action :set_review, only: [:edit, :update, :show]
+  before_action :set_review, only: [:edit, :show, :destroy]
 
   def new
     @review = Review.new
@@ -10,13 +10,13 @@ class ReviewsController < ApplicationController
   def create
     # Why must an instance variable be used here?
     @review = Review.new(review_params)
-    binding.pry
     # raise params.inspect
-    @business = Business.find_by(id: params[:biz_id])
+    @business = Business.find_by(id: params[:review][:business_id])
     # raise @business.inspect
     if @review.save
       flash[:notice] = "Thank you for submitting a review!"
-      redirect_to biz_review_path(@review.business.id, @review)
+      # binding.pry
+      redirect_to biz_review_path(@business, @review)
     else
       flash[:alert] = "Invalid data. Please, fix."
       render 'new'
@@ -28,6 +28,10 @@ class ReviewsController < ApplicationController
   end
 
   def update
+    # Why do I need to set @review manually here? My before_action doesn't work
+    # It will create a new review instead.
+    @review = Review.find_by(id: params[:id])
+
     if @review.update(review_params)
       # @review.update(crypto_ids: business_params[:crypto_attributes][:ids])
       flash[:alert] = "Review was successfully updated."
@@ -45,6 +49,12 @@ class ReviewsController < ApplicationController
   end
 
   def index
+  end
+
+  def destroy
+    @review.destroy
+    flash[:alert] = "Review was successfully destroyed."
+    redirect_to biz_reviews_path
   end
 
   private

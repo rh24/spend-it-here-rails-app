@@ -6,6 +6,10 @@
 
 <div>
   <%= @review.comment %>
-</div>
+</div><br />
 
-  <%= link_to "Edit Review", edit_biz_review_path(@business, @review) %>
+<% if current_user == @review.user %>
+  <%= link_to "Edit Review", edit_biz_review_path(@business, @review) %> |
+  <%= link_to "Delete", biz_review_path(@business, @review), :method => :delete, :confirm => "Are you sure?" %> |
+  <%= link_to "See all #{@business.name}'s reviews", biz_reviews_path(@business) %>
+<% end %>

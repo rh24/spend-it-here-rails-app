@@ -52,10 +52,6 @@ class BusinessesController < ApplicationController
 
   private
 
-  # def filtering_params
-  #   params.slice(:offer_discounts)
-  # end
-
   def set_business
     @business = Business.find_by(id: params[:id])
   end

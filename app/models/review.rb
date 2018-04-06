@@ -18,7 +18,7 @@ class Review < ApplicationRecord
     # Why are blank crypto_ids being generated?
 
     self.business = Business.find_or_create_by(name: business_attributes[:name], location_id: business_attributes[:location_id])
-    business.category = Category.find(business_attributes[:category_id])
+    business.category = Category.find_by(id: business_attributes[:category_id])
     business.price_range = business_attributes[:price_rage]
     business.description = business_attributes[:description]
     business.discount_offered = business_attributes[:discount_offered]
