@@ -27,7 +27,7 @@
             <%= business.text_field :price_range, :size => "50", :placeholder => "Price range e.g. $, $$, $$$..." %><br />
             <%= business.text_area :description, :size => "48x5", :placeholder => "Description of goods and services..." %><br />
             <label>Select location: </label>
-            <%= business.collection_select :location_id, Location.all, :id, :city,  include_blank: true %><br />
+            <%= business.collection_select :location_id, Location.all, :id, :full_location,  include_blank: true %><br />
             <label>Or enter new location here: </label><br />
               <%= f.fields_for :location_attributes do |location| %>
                 <%= location.text_field :city, :placeholder => "City" %>

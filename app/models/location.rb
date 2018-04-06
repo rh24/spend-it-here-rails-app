@@ -3,6 +3,12 @@ class Location < ApplicationRecord
   has_many :reviews, through: :businesses
   has_many :spendables
   has_many :cryptos, through: :spendables
-  
-  # has_many :reviews, through: :crypto_business
+
+  def full_location
+    if city != "N/A"
+      full_location ||= "#{city}, #{state}, #{country}"
+    else
+      city
+    end
+  end
 end
