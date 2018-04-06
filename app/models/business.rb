@@ -10,6 +10,12 @@ class Business < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
 
+  def location_attributes=(location_attributes)
+    # location_attributes = {"city"=>"Austin", "state"=>"Texas", "country"=>"USA"}
+    self.location = Location.find_or_create_by(location_attributes)
+    save
+  end
+
   def crypto_attributes=(crypto_attributes)
     crypto_attributes.reject { |value| value.to_s.empty? }.each do |id|
       spendable = Spendable.find_or_create_by(location_id: self.location.id, crypto_id: id)

@@ -9,11 +9,12 @@ class BusinessesController < ApplicationController
 
   def create
     @business = Business.new(business_params)
+    # raise business_params.inspect
     if @business.save
       redirect_to biz_path(@business)
     else
       # raise @business.errors.full_messages.inspect
-      flash[:alert] = "Fix me!"
+      # flash[:alert] = "Fix me!"
       redirect_to new_biz_path
     end
   end
@@ -36,9 +37,9 @@ class BusinessesController < ApplicationController
   end
 
   def index
-    @businesses = Business.where(nil) # creates an anonymous scope. What does that mean?
+    @businesses = Business.order_by_name.where(nil) # creates an anonymous scope. What does that mean?
     # raise params.inspect
-    @businesses = @businesses.offer_discounts(params[:offer_discounts]) if params[:offer_discounts].present?
+    @businesses = Business.offer_discounts(params[:offer_discounts]) if params[:offer_discounts].present?
   end
 
   def show
@@ -64,6 +65,7 @@ class BusinessesController < ApplicationController
       :category_id,
       :location_id,
       :discount_offered,
+      location_attributes: {},
       crypto_attributes: {}
     )
   end
