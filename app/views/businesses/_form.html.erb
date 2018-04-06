@@ -2,7 +2,7 @@
   <label>Select category: </label>
   <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: true %><br /><br />
   <label>Where is this business located?</label>
-  <%= f.collection_select :location_id, Location.all, :id, :city, include_blank: true %><br />
+  <%= f.collection_select :location_id, Location.all, :id, :full_location, include_blank: true %><br />
   <label>Or enter new location here: </label><br />
     <%= f.fields_for :location_attributes do |location| %>
       <%= location.text_field :city, :placeholder => "City" %>

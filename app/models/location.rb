@@ -5,10 +5,6 @@ class Location < ApplicationRecord
   has_many :cryptos, through: :spendables
 
   def full_location
-    if city != "N/A"
-      full_location ||= "#{city}, #{state}, #{country}"
-    else
-      city
-    end
+    city != "N/A" ? full_location ||= "#{city}, #{state}, #{country}" : city
   end
 end
