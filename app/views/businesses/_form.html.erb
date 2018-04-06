@@ -28,7 +28,7 @@
   <%= f.text_field :price_range, :size => "28", :placeholder => "Price range e.g. $, $$, $$$..." %><br /><br />
   <%= f.text_area :description, :size => "48x5", :placeholder => "Description..."%><br />
 
-  <%= f.label "Enter cryptocurrencies accepted: " %><br />
+  <%= f.label "Check cryptocurrencies accepted: " %><br />
   <%= f.fields_for :crypto_attributes do |crypto| %>
     <%= crypto.collection_check_boxes :ids, Crypto.all, :id, :name, { checked: business.crypto_ids },
     { item_wrapper_class: 'checkbox_container'} %>
