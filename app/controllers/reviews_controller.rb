@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :require_login, except: [:show, :index]
   before_action :set_business, except: [:create]
+  before_action :set_review, only: [:edit, :update, :show]
 
   def new
     @review = Review.new
@@ -9,6 +10,7 @@ class ReviewsController < ApplicationController
   def create
     # Why must an instance variable be used here?
     @review = Review.new(review_params)
+    binding.pry
     # raise params.inspect
     @business = Business.find_by(id: params[:biz_id])
     # raise @business.inspect
@@ -22,6 +24,7 @@ class ReviewsController < ApplicationController
   end
 
   def edit
+    # @review = Review.find_by(id: params[:id])
   end
 
   def update
@@ -38,7 +41,7 @@ class ReviewsController < ApplicationController
 
   def show
     # @review = @business.reviews.each { |r| r.id == params[:id] }.first
-    @review = Review.find_by(id: params[:id], business_id: @business.id)
+    # @review = Review.find_by(id: params[:id], business_id: @business.id)
   end
 
   def index
@@ -48,6 +51,10 @@ class ReviewsController < ApplicationController
 
   def set_business
     @business = Business.find_by(id: params[:biz_id])
+  end
+
+  def set_review
+    @review = Review.find_by(id: params[:id])
   end
 
   def review_params

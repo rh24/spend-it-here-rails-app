@@ -39,14 +39,6 @@ class BusinessesController < ApplicationController
     @businesses = Business.where(nil) # creates an anonymous scope. What does that mean?
     # raise params.inspect
     @businesses = @businesses.offer_discounts(params[:offer_discounts]) if params[:offer_discounts].present?
-    # raise @businesses.inspect
-    # @businesses = Business.order_by_name
-    # filtering_params.each do |key, value|
-    #   @businesses = @businesses.public_send(key, value) if value.present?
-    # end
-    # if params[:offer_discounts]
-    #   @businesses = apply_scopes(Business.order_by_name).all
-    # end
   end
 
   def show
