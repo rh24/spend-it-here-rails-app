@@ -20,7 +20,7 @@
   <label>Or enter new location here: </label><br />
     <%= f.fields_for :location_attributes do |location| %>
       <%= location.text_field :city, :placeholder => "City" %>
-      <%= location.text_field :state, :placeholder => "State" %>
+      <%= location.text_field :state, :placeholder => "State/Province" %>
       <%= location.text_field :country, :placeholder => "Country" %>
     <% end %><br /><br />
 

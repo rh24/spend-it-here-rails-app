@@ -29,9 +29,9 @@
             <label>Select location: </label>
             <%= business.collection_select :location_id, Location.order_by_city, :id, :full_location,  include_blank: true %><br />
             <label>Or enter new location here: </label><br />
-              <%= f.fields_for :location_attributes do |location| %>
+              <%= business.fields_for :location_attributes do |location| %>
                 <%= location.text_field :city, :placeholder => "City" %>
-                <%= location.text_field :state, :placeholder => "State" %>
+                <%= location.text_field :state, :placeholder => "State/Province" %>
                 <%= location.text_field :country, :placeholder => "Country" %>
               <% end %><br /><br />
             <%= business.check_box :discount_offered, :checked => false %>
@@ -55,11 +55,6 @@
     <div>
       <label>Which cryptocurrency did you pay in?</label>
       <%= f.collection_select :crypto_id, Crypto.all, :id, :name, include_blank: true %><br />
-      <label>Or enter coin/token here: </label>
-      <%= f.fields_for :cryptos do |crypto| %>
-        <%= crypto.text_field :name_1 %>
-        <% # What if I want to add fields as I go? %>
-      <% end %>
     </div>
     <div>
       <%= f.check_box :would_recommend, :checked => true %>

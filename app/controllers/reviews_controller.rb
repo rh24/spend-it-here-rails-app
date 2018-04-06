@@ -10,13 +10,9 @@ class ReviewsController < ApplicationController
   def create
     # Why must an instance variable be used here?
     @review = Review.new(review_params)
-    # raise params.inspect
-    @business = Business.find_by(id: params[:review][:business_id])
-    # raise @business.inspect
     if @review.save
       flash[:notice] = "Thank you for submitting a review!"
-      # binding.pry
-      redirect_to biz_review_path(@business, @review)
+      redirect_to biz_review_path(@review.business, @review)
     else
       flash[:alert] = "Invalid data. Please, fix."
       render 'new'
@@ -31,10 +27,9 @@ class ReviewsController < ApplicationController
     # Why do I need to set @review manually here? My before_action doesn't work
     # It will create a new review instead.
     @review = Review.find_by(id: params[:id])
-
     if @review.update(review_params)
       # @review.update(crypto_ids: business_params[:crypto_attributes][:ids])
-      flash[:alert] = "Review was successfully updated."
+      flash[:notice] = "Review was successfully updated."
       redirect_to biz_review_path(@business, @review)
     else
       flash[:alert] = "Fix me!"
@@ -76,8 +71,14 @@ class ReviewsController < ApplicationController
       :crypto_id,
       :user_id,
       :business_id,
-      :businesses_attributes => {}
+      businesses_attributes: [:name, :price_range, :description, :category_id, :location_id, :discount_offered, crypto_ids: [], location_attributes: [:city, :state, :country]]
     )
   end
+  #
+  # def location_params
+  #   params.require(:review).permit(
+  #     :location_attributes => {}
+  #   )
+  # end
   # What's the difference between review_params and review_params(*args)? Why use one over the other?
 end

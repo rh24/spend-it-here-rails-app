@@ -16,8 +16,8 @@ class Business < ApplicationRecord
     save
   end
 
-  def crypto_attributes=(crypto_attributes)
-    crypto_attributes.reject { |value| value.to_s.empty? }.each do |id|
+  def crypto_attributes=(cyrypto_ids)
+    crypto_ids.reject { |value| value.to_s.empty? }.each do |id|
       spendable = Spendable.find_or_create_by(location_id: self.location.id, crypto_id: id)
       self.spendables << spendable if !self.spendables.include?(spendable)
     end

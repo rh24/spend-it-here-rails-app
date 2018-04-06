@@ -15,4 +15,7 @@ class Location < ApplicationRecord
   # In the future,
   # I want to be able to separate within the dropdown menu by country,
   # or show city and state progressively after country is selected.
+
+  # I want to be able to use Google maps or some other gem to validate locations.
+  # I don't want users to be able to create non-existent locations.
 end
