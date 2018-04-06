@@ -71,6 +71,7 @@ class ReviewsController < ApplicationController
     params.require(:review).permit(
       :title,
       :comment,
+      :rating,
       :would_recommend,
       :crypto_id,
       :user_id,

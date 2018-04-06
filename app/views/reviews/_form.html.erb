@@ -49,6 +49,10 @@
       <%= f.text_area :comment, :placeholder => "How was your experience?", :size => "48x18" %><br />
     </div>
     <div>
+      <label>How would you rate your experience? </label>
+      <%= f.collection_radio_buttons :rating, [[5], [4], [3], [2], [1]], :first, :last %>
+    </div>
+    <div>
       <label>Which cryptocurrency did you pay in?</label>
       <%= f.collection_select :crypto_id, Crypto.all, :id, :name, include_blank: true %><br />
       <label>Or enter coin/token here: </label>

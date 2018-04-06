@@ -5,7 +5,9 @@
 <h2><%= @review.title %></h2>
 
 <div>
-  <%= @review.comment %>
+  <%= @review.comment %><br /><br />
+  <%= display_rating @review %>
+  <% # binding.pry %>
 </div><br />
 
 <% if current_user == @review.user %>

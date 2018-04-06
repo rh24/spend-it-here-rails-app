@@ -5,6 +5,7 @@
 </div>
 
 <h1><%= @business.name %></h1>
+<h2><%= link_to "[Leave a review]", new_biz_review_path(@business, @review) %></h2>
 
 <div class="">
   <label>Price Range: </label>
