@@ -21,8 +21,24 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @review.update(review_params)
+      # @review.update(crypto_ids: business_params[:crypto_attributes][:ids])
+      flash[:alert] = "Review was successfully updated."
+      redirect_to biz_review_path(@business, @review)
+    else
+      flash[:alert] = "Fix me!"
+      # redirect_to edit_biz_path(@business)
+      render :edit
+    end
+  end
+
   def show
-    @review = @business.reviews.each { |r| r.id == params[:id] }.first
+    # @review = @business.reviews.each { |r| r.id == params[:id] }.first
+    @review = Review.find_by(id: params[:id], business_id: @business.id)
   end
 
   def index

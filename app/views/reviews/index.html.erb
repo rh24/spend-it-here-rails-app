@@ -4,7 +4,7 @@
   <ul>
     <% @business.reviews.each do |r| %>
       <li>
-        <h4><%= r.title %></h4>
+        <h4><%= link_to "#{r.title}", biz_review_path(@business, r) %></h4>
         <%= r.rating %>
         <%= r.comment %>
         <% if r.would_recommend %>
