@@ -1,3 +1,3 @@
-class UsersController < ApplicationController
+class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
 end

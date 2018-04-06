@@ -22,7 +22,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
-gem 'omniauth-google-oauth2', "~>0.2.1"
+gem 'omniauth-google-oauth2'
 
 gem 'dotenv-rails'
 gem 'has_scope', '~> 0.7.1'
