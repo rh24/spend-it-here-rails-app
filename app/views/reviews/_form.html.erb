@@ -17,12 +17,12 @@
     <% if !params[:biz_id] %>
       <div>
         <label>Which business are you reviewing?</label>
-        <%= f.collection_select :business_id, Business.all, :id, :name, include_blank: true %><br /><br />
+        <%= f.collection_select :business_id, Business.order_by_name, :id, :name, include_blank: true %><br /><br />
         <label>Or enter new business here: </label><br />
           <% # Have to make nested form %>
           <%= f.fields_for :businesses_attributes do |business| %>
             <%= label :category_id, "Select category: " %>
-            <%= business.collection_select :category_id, Category.all, :id, :name, include_blank: true %><br />
+            <%= business.collection_select :category_id, Category.order_by_name, :id, :name, include_blank: true %><br />
             <%= business.text_field :name, :size => "50", :placeholder => "Enter name of business here..." %><br />
             <%= business.text_field :price_range, :size => "50", :placeholder => "Price range e.g. $, $$, $$$..." %><br />
             <%= business.text_area :description, :size => "48x5", :placeholder => "Description of goods and services..." %><br />

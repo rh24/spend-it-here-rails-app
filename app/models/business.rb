@@ -41,6 +41,9 @@ class Business < ApplicationRecord
     #   where(discount_offered: true)
     # end
 
+
+  # When should I use a scope method versus a class method? i.e. Is it nonsensical to use .order_by_name as a scope method?
+
   def self.order_by_name
     order(name: "asc")
   end

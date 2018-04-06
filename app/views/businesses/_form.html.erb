@@ -14,7 +14,7 @@
 
 <%= form_for business, :url => url do |f| %>
   <label>Select category: </label>
-  <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: true %><br /><br />
+  <%= f.collection_select :category_id, Category.order_by_name, :id, :name, include_blank: true %><br /><br />
   <label>Where is this business located?</label>
   <%= f.collection_select :location_id, Location.order_by_city, :id, :full_location, include_blank: true %><br />
   <label>Or enter new location here: </label><br />
