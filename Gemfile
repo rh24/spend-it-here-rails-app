@@ -22,9 +22,11 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
+gem 'omniauth-google-oauth2', "~>0.2.1"
 
 gem 'dotenv-rails'
 gem 'has_scope', '~> 0.7.1'
+gem 'bootstrap', '~> 4.0.0'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

@@ -9,4 +9,5 @@ Rails.application.routes.draw do
 
   get '/businesses/:offer_discounts' => 'businesses#index', as: 'biz_specials'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get '/businesses/:bitcoin' => 'spendables#bitcoin' as: 
 end

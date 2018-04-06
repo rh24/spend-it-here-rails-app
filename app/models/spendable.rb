@@ -9,4 +9,6 @@ class Spendable < ApplicationRecord
   def ethereum
     # Spendable.where(crypto_id: Crypto.find_by(name: "Ethereum").joins(:businesses)
   end
+
+  # Build a search bar method that accepts a parameter
 end
