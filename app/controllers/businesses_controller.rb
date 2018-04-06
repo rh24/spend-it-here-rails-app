@@ -9,13 +9,11 @@ class BusinessesController < ApplicationController
 
   def create
     @business = Business.new(business_params)
-    raise business_params.inspect
+    # raise business_params.inspect
     if @business.save
       redirect_to biz_path(@business)
     else
-      # raise @business.errors.full_messages.inspect
-      # flash[:alert] = "Fix me!"
-      redirect_to new_biz_path
+      render :new   # render allows errors to appear. redirect does not. 
     end
   end
 

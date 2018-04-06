@@ -4,6 +4,10 @@ class Location < ApplicationRecord
   has_many :spendables
   has_many :cryptos, through: :spendables
 
+  validates :city, presence: true, uniqueness: true, allow_blank: false
+  validates :state, presence: true, uniqueness: true, allow_blank: false
+  validates :country, presence: true, uniqueness: true, allow_blank: false
+
   def full_location
     city != "N/A" ? full_location ||= "#{city}, #{state}, #{country}" : city
   end

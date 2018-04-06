@@ -12,7 +12,7 @@ class Business < ApplicationRecord
 
   def location_attributes=(location_attributes)
     # location_attributes = {"city"=>"Austin", "state"=>"Texas", "country"=>"USA"}
-    self.location = Location.find_or_create_by(location_attributes)
+    self.location = Location.find_or_create_by(location_attributes) if !location_attributes.values.include?("")
     save
   end
 
