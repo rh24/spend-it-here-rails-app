@@ -19,7 +19,6 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    # @review = Review.find_by(id: params[:id])
   end
 
   def update
@@ -38,8 +37,6 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    # @review = @business.reviews.each { |r| r.id == params[:id] }.first
-    # @review = Review.find_by(id: params[:id], business_id: @business.id)
   end
 
   def index
