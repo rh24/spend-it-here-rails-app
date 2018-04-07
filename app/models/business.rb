@@ -11,19 +11,20 @@ class Business < ApplicationRecord
   validates :description, presence: true
 
   def location_attributes=(location_attributes)
-    if !!self.location_id
-      location = Location.find_by(id: location_id)
-    else
+    # if !!self.location_id
+    #   location = Location.find_by(id: location_id)
+    # else
       # location_attributes = {"city"=>"Austin", "state"=>"Texas", "country"=>"USA"}
-      self.location = Location.find_or_create_by(location_attributes) if !location_attributes.values.include?("")
-    end
+      self.location = Location.find_or_create_by(location_attributes) if !location_attributes.values.include?("") && !self.location_id
+    # end
     save
   end
 
-  def crypto_attributes=(cyrypto_ids)
-    crypto_ids.reject { |value| value.to_s.empty? }.each do |id|
-      spendable = Spendable.find_or_create_by(location_id: self.location.id, crypto_id: id)
+  def crypto_attributes=(crypto_ids)
+    crypto_ids.values.first.reject { |value| value.to_s.empty? }.each do |id|
+      spendable = Spendable.find_or_create_by(location_id: self.location.id, crypto: Crypto.find_by(id: id), business_id: self.id)
       self.spendables << spendable if !self.spendables.include?(spendable)
+            # binding.pry
     end
     self.save
     # If I save here will validation errors show up?
