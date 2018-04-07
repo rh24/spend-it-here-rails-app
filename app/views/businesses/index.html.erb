@@ -1,19 +1,9 @@
-<div class="">
-  <% if !!flash[:alert] %>
-    <%= flash[:alert] %>
-  <% end %>
-</div>
-
 <% if params[:offer_discounts] %>
   <h1>We offer discounts for crypto payments!</h1>
 <% else %>
   <h1>List of All Businesses</h1>
 <% end %>
 
-<div class="">
-  <%= form_for biz_index_path, method: :get do %>
-  <% end %>
-</div>
 <div class="">
   <ul>
     <% @businesses.each do |b| %>

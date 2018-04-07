@@ -20,6 +20,14 @@ module ReviewsHelper
     link_to "See all #{@business.name}'s reviews", biz_reviews_path(@business)
   end
 
+  def display_recommendation(review)
+    if review.would_recommend
+      "#{display_email(review)} recommends this business. #{display_rating(review)}"
+    else
+      "#{display_email(review)} does not recommend this business."
+    end
+  end
+
   private
 
   def is_creator_of(review)

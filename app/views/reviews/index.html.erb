@@ -7,14 +7,10 @@
       <% @business.reviews.each do |r| %>
         <li>
           <h4><%= link_to "#{r.title}", biz_review_path(@business, r) %></h4>
-          <%= r.comment %>
-          <% if r.would_recommend %>
-            <p><%= "#{display_email r} recommends this business. #{display_rating r}" %></p>
-          <% else %>
-            <p><%= r.user.email %> does not recommend this business.</p>
-          <% end %>
+          <%= r.comment %><br />
+          <%= display_recommendation r %><br />
           <label>User paid in</label>
-          <%= r.crypto.name %><br />
+          <%= r.crypto.name %>.<br />
         </li>
       <% end %>
     </ul>
