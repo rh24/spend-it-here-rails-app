@@ -20,14 +20,18 @@ class Review < ApplicationRecord
     #     "discount_offered"=>"0",
     #     "crypto_ids"=>["", "7", "8", "9", "10", "11", "13", "17", "18", "21"]},
     # Why are blank crypto_ids being generated?
-    self.business = Business.find_or_create_by(name: business_attributes[:name], location_id: business_attributes[:location_id])
-    business.location_attributes = business_attributes[:location_attributes]
-    business.category = Category.find_by(id: business_attributes[:category_id])
-    business.price_range = business_attributes[:price_range]
-    business.description = business_attributes[:description]
-    business.discount_offered = business_attributes[:discount_offered]
-    business.crypto_attributes=(business_attributes[:cryto_ids])
-    # binding.pry
+    if !self.business_id
+      self.business = Business.find_or_create_by(name: business_attributes[:name], location_id: business_attributes[:location_id])
+      business.location_attributes = business_attributes[:location_attributes]
+      business.category = Category.find_by(id: business_attributes[:category_id])
+      business.price_range = business_attributes[:price_range]
+      business.description = business_attributes[:description]
+      business.discount_offered = business_attributes[:discount_offered]
+      business.crypto_attributes=(business_attributes[:cryto_ids])
+    else
+      business = Business.find_by(id: business_id)
+    end
+          # binding.pry
     save
     # self.business.update(business)
   end

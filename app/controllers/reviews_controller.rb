@@ -26,12 +26,10 @@ class ReviewsController < ApplicationController
     # It will create a new review instead.
     @review = Review.find_by(id: params[:id])
     if @review.update(review_params)
-      # @review.update(crypto_ids: business_params[:crypto_attributes][:ids])
       flash[:notice] = "Review was successfully updated."
       redirect_to biz_review_path(@business, @review)
     else
       flash[:alert] = "Fix me!"
-      # redirect_to edit_biz_path(@business)
       render :edit
     end
   end
