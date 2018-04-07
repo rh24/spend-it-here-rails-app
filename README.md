@@ -10,7 +10,7 @@ Users may view their profiles to see a list of reviews they have left for listed
 
 ## Installation
 
-`bundle install`
+```$ bundle install```
 
 ## Contributing
 
