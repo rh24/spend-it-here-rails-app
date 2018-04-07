@@ -6,12 +6,18 @@
 
 <div>
   <%= @review.comment %><br /><br />
-  <%= display_rating @review %>
-  <% # binding.pry %>
+  <%= display_rating @review %><br />
+
+  <% # DRY code. Separate if statement below into helper? %>
+  <% if @review.would_recommend %>
+    <p><%= "#{display_email @review} recommends this business." %></p>
+  <% else %>
+    <p><%= @review.user.email %> does not recommend this business.</p>
+  <% end %>
+
+  <p>User paid in <%= @review.crypto.name %>.</p>
 </div><br />
 
-<% if current_user == @review.user %>
-  <%= link_to "Edit Review", edit_biz_review_path(@business, @review) %> |
-  <%= link_to "Delete", biz_review_path(@business, @review), :method => :delete, :confirm => "Are you sure?" %> |
-  <%= link_to "See all #{@business.name}'s reviews", biz_reviews_path(@business) %>
-<% end %>
+<%= display_edit_link @review %> |
+<%= display_delete_link @review %> |
+<%= display_all_link @review %>
