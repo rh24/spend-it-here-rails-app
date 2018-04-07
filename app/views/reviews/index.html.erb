@@ -1,20 +1,24 @@
-<h1><%= @business.name %>'s Reviews</h1>
-<h2><%= link_to "[Leave a review]", new_biz_review_path(@business, @review) %></h2>
+<% if !!@business %>
+  <h1><%= @business.name %>'s Reviews</h1>
+  <h2><%= link_to "[Leave a review]", new_biz_review_path(@business, @review) %></h2>
 
-<div class="">
-  <ul>
-    <% @business.reviews.each do |r| %>
-      <li>
-        <h4><%= link_to "#{r.title}", biz_review_path(@business, r) %></h4>
-        <%= r.comment %>
-        <% if r.would_recommend %>
-          <p><%= "#{display_email r} recommends this business. #{display_rating r}" %></p>
-        <% else %>
-          <p><%= r.user.email %> does not recommend this business.</p>
-        <% end %>
-        <label>User paid in</label>
-        <%= r.crypto.name %><br />
-      </li>
-    <% end %>
-  </ul>
-</div>
+  <div class="">
+    <ul>
+      <% @business.reviews.each do |r| %>
+        <li>
+          <h4><%= link_to "#{r.title}", biz_review_path(@business, r) %></h4>
+          <%= r.comment %>
+          <% if r.would_recommend %>
+            <p><%= "#{display_email r} recommends this business. #{display_rating r}" %></p>
+          <% else %>
+            <p><%= r.user.email %> does not recommend this business.</p>
+          <% end %>
+          <label>User paid in</label>
+          <%= r.crypto.name %><br />
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% else %>
+  <%= render 'all' %>
+<% end %>

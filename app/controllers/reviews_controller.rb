@@ -38,6 +38,7 @@ class ReviewsController < ApplicationController
   end
 
   def index
+    @reviews = Review.all if !params[:biz_id]
   end
 
   def destroy
