@@ -22,10 +22,7 @@ class BusinessesController < ApplicationController
   def update
     # binding.pry
     if @business.update(business_params)
-      @business.crypto_ids=(business_params[:crypto_attributes][:ids])
-      # @business.save
-      # Why isn't this already taken care of in line 26?
-      # raise business_params.inspect
+      # @business.crypto_ids=(business_params[:crypto_attributes][:ids])
       flash[:alert] = "Business was successfully updated."
       redirect_to biz_path(@business)
     else
@@ -36,7 +33,6 @@ class BusinessesController < ApplicationController
 
   def index
     @businesses = Business.order_by_name.where(nil) # creates an anonymous scope. What does that mean?
-    # raise params.inspect
     @businesses = Business.offer_discounts(params[:offer_discounts]) if params[:offer_discounts].present?
   end
 
