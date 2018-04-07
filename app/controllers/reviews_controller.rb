@@ -14,8 +14,7 @@ class ReviewsController < ApplicationController
       flash[:notice] = "Thank you for submitting a review!"
       redirect_to biz_review_path(@review.business, @review)
     else
-      flash[:alert] = "Invalid data. Please, fix."
-      render 'new'
+      render :new
     end
   end
 

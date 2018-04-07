@@ -29,7 +29,7 @@ class BusinessesController < ApplicationController
       redirect_to biz_path(@business)
     else
       flash[:alert] = "Fix me!"
-      redirect_to edit_biz_path(@business)
+      render :edit
     end
   end
 
