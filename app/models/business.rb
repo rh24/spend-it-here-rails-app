@@ -11,8 +11,12 @@ class Business < ApplicationRecord
   validates :description, presence: true
 
   def location_attributes=(location_attributes)
-    # location_attributes = {"city"=>"Austin", "state"=>"Texas", "country"=>"USA"}
-    self.location = Location.find_or_create_by(location_attributes) if !location_attributes.values.include?("")
+    if !!self.location_id
+      location = Location.find_by(id: location_id)
+    else
+      # location_attributes = {"city"=>"Austin", "state"=>"Texas", "country"=>"USA"}
+      self.location = Location.find_or_create_by(location_attributes) if !location_attributes.values.include?("")
+    end
     save
   end
 

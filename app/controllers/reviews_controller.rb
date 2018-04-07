@@ -71,14 +71,21 @@ class ReviewsController < ApplicationController
       :crypto_id,
       :user_id,
       :business_id,
-      businesses_attributes: [:name, :price_range, :description, :category_id, :location_id, :discount_offered, crypto_ids: [], location_attributes: [:city, :state, :country]]
+      businesses_attributes: [
+        :name,
+        :price_range,
+        :description,
+        :category_id,
+        :location_id,
+        :discount_offered,
+        crypto_ids: [],
+        location_attributes: [
+          :city,
+          :state,
+          :country
+        ]
+      ]
     )
   end
-  #
-  # def location_params
-  #   params.require(:review).permit(
-  #     :location_attributes => {}
-  #   )
-  # end
   # What's the difference between review_params and review_params(*args)? Why use one over the other?
 end

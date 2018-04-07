@@ -1,16 +1,4 @@
-<% if business.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= pluralize(business.errors.count, "error") %> prohibited this post from being saved
-    </h2>
-
-    <ul>
-      <% business.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= render 'layouts/errors', :variable => business %>
 
 <%= form_for business, :url => url do |f| %>
   <label>Select category: </label>

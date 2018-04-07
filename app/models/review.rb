@@ -5,6 +5,10 @@ class Review < ApplicationRecord
 
   delegate :location, to: :business
 
+  validates :title, presence: true
+  validates :comment, presence: true
+
+
   def businesses_attributes=(business_attributes) # How can I clean this custom setter up?
     # Why do I need to put self only once?
     # business_attributes = {"category_id"=>"12", "name"=>"Beacon's Closet", "price_range"=>"$$", "description"=>"One stop shop.", "location_id"=>"1", "discount_offered"=>"1"}

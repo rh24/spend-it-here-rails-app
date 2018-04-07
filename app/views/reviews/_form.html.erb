@@ -1,16 +1,4 @@
-<% if review.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= pluralize(review.errors.count, "error") %> prohibited this post from being saved
-    </h2>
-
-    <ul>
-      <% review.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= render 'layouts/errors', :variable => review %>
 
 <div>
   <%= form_for review, :url => url do |f| %>
