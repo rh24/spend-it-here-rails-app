@@ -9,7 +9,7 @@ class Review < ApplicationRecord
   validates :comment, presence: true
   validates :rating, inclusion: { in: %w(5 4 3 2 1) }
 
-  def businesses_attributes=(business_attributes) # How can I clean this custom setter up?
+  def businesses_attributes=(business_attributes)
     if !self.business_id
       self.business = Business.find_or_create_by(name: business_attributes[:name], location_id: business_attributes[:location_id])
       business.location_attributes = business_attributes[:location_attributes]
