@@ -14,9 +14,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def github
-    # binding.pry
     @user = User.from_omniauth(request.env["omniauth.auth"])
-    # binding.pry
     if @user.save
       flash[:notice] = "Success"
       sign_in_and_redirect @user
@@ -24,6 +22,5 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       raise @user.save!
       redirect_to new_user_registration_url, alert: @user.errors.full_messages.join("\n")
     end
-    # binding.pry
   end
 end

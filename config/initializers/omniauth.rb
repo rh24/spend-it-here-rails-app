@@ -9,6 +9,5 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   #     :image_aspect_ratio => "square",
   #     :image_size => 50
   #   }
-  # provider :digitalocean, SETTINGS['CLIENT_ID'], SETTINGS['CLIENT_SECRET'], scope: "read write"
   provider :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET'], scope: "user:email,user:follow"
 end
