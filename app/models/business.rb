@@ -2,7 +2,7 @@ class Business < ApplicationRecord
   belongs_to :location
   belongs_to :category
   has_many :spendables
-  has_many :cryptos, through: :spendables # Is a three join table a weird thing to do?
+  has_many :cryptos, through: :spendables
   has_many :items
   has_many :reviews
   has_many :users, through: :reviews
@@ -27,23 +27,11 @@ class Business < ApplicationRecord
     # Before this custom attribute writer hits, the model validations will be triggered first.
   end
 
-  # scope
-  # def ratings
-  #   self.reviews.where(:rating)
-  # end
-
-  # scope method
-  # users pay most with ___ crypto
-  # select reviews, group by cryptos, order desc, LIMIT 1
-
   scope :offer_discounts, -> (offer_discounts) { where(discount_offered: true) }
 
     # def self.offer_discounts
     #   where(discount_offered: true)
     # end
-
-
-  # When should I use a scope method versus a class method? i.e. Is it nonsensical to use .order_by_name as a scope method?
 
   def self.order_by_name
     order(name: "asc")
