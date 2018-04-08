@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable
+         :omniauthable, :omniauth_providers => [:google_oath2, :github]
 
   has_many :reviews
 
@@ -40,17 +40,18 @@ class User < ApplicationRecord
   #   end
   #   user
   # end
-
   def self.from_omniauth(auth)
     if user = User.find_by_email(auth.info.email)
       user.provider = auth.provider
       user.uid = auth.uid
+      user.password = Devise.friendly_token[0,20]
       user
     else
-      where(auth.slice(:provider, :uid)).first_or_create do |user|
+      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
         user.provider = auth.provider
         user.uid = auth.uid
         user.email = auth.info.email
+        user.password = Devise.friendly_token[0,20]
         user
       end
     end

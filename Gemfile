@@ -20,11 +20,8 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 gem 'devise'
 gem 'omniauth'
-gem 'omniauth-facebook'
-gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2', '~> 0.2.1'
 gem 'omniauth-github'
-gem 'omniauth-digitalocean'
 
 gem 'dotenv-rails'
 gem 'has_scope', '~> 0.7.1'
