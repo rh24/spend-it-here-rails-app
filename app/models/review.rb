@@ -7,19 +7,9 @@ class Review < ApplicationRecord
 
   validates :title, presence: true
   validates :comment, presence: true
+  validates :rating, inclusion: { in: %w(5 4 3 2 1) }
 
   def businesses_attributes=(business_attributes) # How can I clean this custom setter up?
-    # Why do I need to put self only once?
-    # business_attributes = {"category_id"=>"12", "name"=>"Beacon's Closet", "price_range"=>"$$", "description"=>"One stop shop.", "location_id"=>"1", "discount_offered"=>"1"}
-    # "businesses_attributes"=>
-    #    {"category_id"=>"7",
-    #     "name"=>"Amnesty International",
-    #     "price_range"=>"$",
-    #     "description"=>"Do good.",
-    #     "location_id"=>"1",
-    #     "discount_offered"=>"0",
-    #     "crypto_ids"=>["", "7", "8", "9", "10", "11", "13", "17", "18", "21"]},
-    # Why are blank crypto_ids being generated?
     if !self.business_id
       self.business = Business.find_or_create_by(name: business_attributes[:name], location_id: business_attributes[:location_id])
       business.location_attributes = business_attributes[:location_attributes]
@@ -31,8 +21,6 @@ class Review < ApplicationRecord
     else
       business = Business.find_by(id: business_id)
     end
-          # binding.pry
     save
-    # self.business.update(business)
   end
 end
